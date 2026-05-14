@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GMTools">
         <activity
+            android:name=".NotepadActivity"
+            android:exported="false"
+            android:theme="@style/Theme.GMTools" />
+        <activity
             android:name=".DiceRollerActivity"
             android:exported="false"
             android:theme="@style/Theme.GMTools" />

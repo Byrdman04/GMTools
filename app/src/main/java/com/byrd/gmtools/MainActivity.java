@@ -31,6 +31,13 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, DiceRollerActivity.class);
             startActivity(intent);
         });
+
+        Button notepadButton = findViewById(R.id.notepadButton);
+
+        notepadButton.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, NotepadActivity.class);
+            startActivity(intent);
+        });
     }
 
 }
