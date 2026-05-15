@@ -38,6 +38,13 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, NotepadActivity.class);
             startActivity(intent);
         });
+
+        Button sessionNotesButton = findViewById(R.id.sessionNotesButton);
+
+        sessionNotesButton.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, SessionNotesActivity.class);
+            startActivity(intent);
+        });
     }
 
 }
