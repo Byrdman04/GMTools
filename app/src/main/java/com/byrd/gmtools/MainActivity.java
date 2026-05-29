@@ -45,6 +45,15 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, SessionNotesActivity.class);
             startActivity(intent);
         });
+
+        Button initiativeTrackerButton = findViewById(R.id.trackerButton);
+
+        initiativeTrackerButton.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, InitiativeTrackerActivity.class);
+            startActivity(intent);
+        });
+
+
     }
 
 }

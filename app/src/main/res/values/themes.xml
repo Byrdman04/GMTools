@@ -1,9 +1,33 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.GMTools" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+    <!-- Base application theme -->
+    <style name="Base.Theme.GMTools"
+        parent="Theme.Material3.DayNight.NoActionBar">
+
+        <!-- Medieval / fantasy readable font -->
+        <item name="fontFamily">serif</item>
+        <item name="android:fontFamily">serif</item>
+
+        <!-- Ensure Material components also inherit it -->
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.GMTools</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.GMTools</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.GMTools</item>
+
+        <item name="textAppearanceHeadlineLarge">@style/TextAppearance.GMTools</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.GMTools</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.GMTools</item>
+
+    </style>
+
+    <!-- Unified text style -->
+    <style name="TextAppearance.GMTools"
+        parent="TextAppearance.Material3.BodyMedium">
+
+        <item name="fontFamily">serif</item>
+        <item name="android:fontFamily">serif</item>
+
     </style>
 
     <style name="Theme.GMTools" parent="Base.Theme.GMTools" />
+
 </resources>

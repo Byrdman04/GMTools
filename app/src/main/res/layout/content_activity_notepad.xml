@@ -14,8 +14,8 @@
         android:text="Notepad"
         android:textColor="#5D2E17"
         android:textSize="40sp"
-        android:typeface="serif"
         android:textStyle="bold"
+        android:typeface="serif"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -50,31 +50,29 @@
         android:id="@+id/bottom_controls_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:id="@+id/font_style_label"
+        <Button
+            android:id="@+id/save_file_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:layout_weight="1"
-            android:text="Font: Serif"
-            android:textColor="#5D2E17"
-            android:textSize="18sp"
-            android:typeface="serif" />
+            android:text="Save TXT"
+            android:textAllCaps="false" />
 
-        <TextView
-            android:id="@+id/font_size_label"
+        <Button
+            android:id="@+id/clear_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Font size: 15"
-            android:textAlignment="viewEnd"
-            android:textColor="#5D2E17"
-            android:textSize="18sp"
-            android:typeface="serif" />
+            android:text="Clear"
+            android:textAllCaps="false" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

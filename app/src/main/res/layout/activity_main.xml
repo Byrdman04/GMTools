@@ -7,13 +7,29 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/titleTextView"
-        android:layout_width="wrap_content"
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/brick_background"
+        android:scaleType="centerCrop"
+        android:contentDescription="@null"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Foreground Content -->
+
+    <ImageView
+        android:id="@+id/titleImageView"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Byrd's GM Tools"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:adjustViewBounds="true"
+        android:contentDescription="Byrd's GM Tools Logo"
+        android:src="@drawable/sign_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,17 +42,17 @@
         android:text="Dice Roller"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+        app:layout_constraintTop_toBottomOf="@id/titleImageView" />
 
     <Button
         android:id="@+id/trackerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text=" Initiative Tracker"
+        android:text="Initiative Tracker"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/diceRollerButton" />
+        app:layout_constraintTop_toBottomOf="@id/diceRollerButton" />
 
     <Button
         android:id="@+id/sessionNotesButton"
@@ -46,7 +62,7 @@
         android:text="Session Notes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trackerButton" />
+        app:layout_constraintTop_toBottomOf="@id/trackerButton" />
 
     <Button
         android:id="@+id/notepadButton"
@@ -56,5 +72,6 @@
         android:text="Notepad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sessionNotesButton" />
+        app:layout_constraintTop_toBottomOf="@id/sessionNotesButton" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

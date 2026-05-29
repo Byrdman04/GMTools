@@ -1,19 +1,21 @@
 package com.byrd.gmtools;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.byrd.gmtools.databinding.ActivityNotepadBinding;
-import com.google.android.material.snackbar.Snackbar;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class NotepadActivity extends AppCompatActivity {
 
     private ActivityNotepadBinding binding;
-    private int currentFontSize = 15;
 
     // SharedPreferences constants
     private static final String PREFS_NAME = "NotepadPrefs";
@@ -33,55 +35,68 @@ public class NotepadActivity extends AppCompatActivity {
         String savedText = prefs.getString(NOTE_KEY, "");
         binding.contentMain.notepadEditText.setText(savedText);
 
-        // --- Logic for the Notepad ---
-
-        // 1. Change Font Size on click
-        binding.contentMain.fontSizeLabel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (currentFontSize < 30) {
-                    currentFontSize += 2;
-                } else {
-                    currentFontSize = 12;
-                }
-
-                binding.contentMain.notepadEditText.setTextSize(currentFontSize);
-                binding.contentMain.fontSizeLabel.setText("Font size: " + currentFontSize);
-            }
-        });
-
-        // 2. Change Font Style on click
-        binding.contentMain.fontStyleLabel.setOnClickListener(new View.OnClickListener() {
-
-            boolean isSerif = true;
-
-            @Override
-            public void onClick(View v) {
-
-                if (isSerif) {
-                    binding.contentMain.notepadEditText.setTypeface(Typeface.MONOSPACE);
-                    binding.contentMain.fontStyleLabel.setText("Font: Monospace");
-                } else {
-                    binding.contentMain.notepadEditText.setTypeface(Typeface.SERIF);
-                    binding.contentMain.fontStyleLabel.setText("Font: Serif");
-                }
-
-                isSerif = !isSerif;
-            }
-        });
-
-        // 3. FAB Save Button
-        binding.fab.setOnClickListener(view -> {
+        // SAVE TO TEXT FILE BUTTON
+        binding.contentMain.saveFileButton.setOnClickListener(v -> {
 
             String noteText = binding.contentMain.notepadEditText
                     .getText()
                     .toString();
 
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putString(NOTE_KEY, noteText);
-            editor.apply();
+            try {
 
-            Snackbar.make(view, "Notes Saved", Snackbar.LENGTH_SHORT).show();
+                File file = new File(
+                        getExternalFilesDir(null),
+                        "session_notes.txt"
+                );
+
+                FileWriter writer = new FileWriter(file);
+                writer.write(noteText);
+                writer.close();
+
+                Toast.makeText(
+                        this,
+                        "Saved to: " + file.getAbsolutePath(),
+                        Toast.LENGTH_LONG
+                ).show();
+
+                // Optional share intent
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_STREAM,
+                        androidx.core.content.FileProvider.getUriForFile(
+                                this,
+                                getPackageName() + ".provider",
+                                file
+                        )
+                );
+
+                shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+                startActivity(Intent.createChooser(
+                        shareIntent,
+                        "Share Notes"
+                ));
+
+            } catch (IOException e) {
+                e.printStackTrace();
+
+                Toast.makeText(
+                        this,
+                        "Failed to save file",
+                        Toast.LENGTH_SHORT
+                ).show();
+            }
+        });
+
+        // CLEAR BUTTON
+        binding.contentMain.clearButton.setOnClickListener(v -> {
+            binding.contentMain.notepadEditText.setText("");
+
+            Toast.makeText(
+                    this,
+                    "Notes Cleared",
+                    Toast.LENGTH_SHORT
+            ).show();
         });
     }
 
@@ -93,9 +108,12 @@ public class NotepadActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 
         SharedPreferences.Editor editor = prefs.edit();
+
         editor.putString(
                 NOTE_KEY,
-                binding.contentMain.notepadEditText.getText().toString()
+                binding.contentMain.notepadEditText
+                        .getText()
+                        .toString()
         );
 
         editor.apply();

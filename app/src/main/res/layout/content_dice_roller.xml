@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#ECECEC"
+    android:background="@drawable/parchment_paper"
     android:padding="12dp"
     tools:context=".DiceRollerActivity">
 
@@ -28,7 +28,8 @@
                 android:layout_height="80dp"
                 android:layout_margin="6dp"
                 android:text="4"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textColor="#FFFFFF" />
 
             <Button
                 android:id="@+id/btnD6"
@@ -36,7 +37,8 @@
                 android:layout_height="80dp"
                 android:layout_margin="6dp"
                 android:text="6"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textColor="#FFFFFF" />
 
             <Button
                 android:id="@+id/btnD8"
@@ -44,7 +46,8 @@
                 android:layout_height="80dp"
                 android:layout_margin="6dp"
                 android:text="8"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textColor="#FFFFFF" />
         </LinearLayout>
 
         <!-- Bottom Row -->
@@ -60,7 +63,8 @@
                 android:layout_height="80dp"
                 android:layout_margin="6dp"
                 android:text="10"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textColor="#FFFFFF" />
 
             <Button
                 android:id="@+id/btnD12"
@@ -68,7 +72,8 @@
                 android:layout_height="80dp"
                 android:layout_margin="6dp"
                 android:text="12"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textColor="#FFFFFF" />
 
             <Button
                 android:id="@+id/btnD20"
@@ -76,7 +81,8 @@
                 android:layout_height="80dp"
                 android:layout_margin="6dp"
                 android:text="20"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textColor="#FFFFFF" />
         </LinearLayout>
 
     </LinearLayout>
@@ -88,6 +94,7 @@
         android:text="Number of Dice:"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:textColor="#000000"
         android:layout_marginTop="20dp" />
 
     <EditText
@@ -96,6 +103,8 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:text="1"
+        android:textColor="#000000"
+        android:textColorHint="#555555"
         android:layout_marginTop="8dp" />
 
     <!-- Modifier -->
@@ -105,6 +114,7 @@
         android:text="Modifier:"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:textColor="#000000"
         android:layout_marginTop="20dp" />
 
     <EditText
@@ -113,6 +123,8 @@
         android:layout_height="wrap_content"
         android:inputType="numberSigned"
         android:text="0"
+        android:textColor="#000000"
+        android:textColorHint="#555555"
         android:layout_marginTop="8dp" />
 
     <!-- Divider -->
@@ -129,7 +141,8 @@
         android:layout_height="wrap_content"
         android:text="Results:"
         android:textSize="28sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="#000000" />
 
     <TextView
         android:id="@+id/tvResults"
@@ -137,6 +150,7 @@
         android:layout_height="wrap_content"
         android:text=""
         android:textSize="20sp"
+        android:textColor="#000000"
         android:layout_marginTop="12dp" />
 
 </LinearLayout>
